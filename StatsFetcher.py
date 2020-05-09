@@ -153,6 +153,7 @@ class StatsFetcher:
         topHighestKillCount = self.decideTop(playerStats, 'highest kill-count')
         topDefuser = self.decideTop(playerStats, 'most defuses')
         topPlanter = self.decideTop(playerStats, 'most plants')
+
         topList = {'Highest KDR': topKDR,
                    'Clutch king': topCLUTCHER,
                    'Most opening kills': topOPENER,
