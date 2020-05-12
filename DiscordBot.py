@@ -53,3 +53,5 @@ async def leaderboard(ctx):
 @client.command()
 async def clear(ctx):
     await ctx.channel.purge()
+
+client.run(TOKEN)
