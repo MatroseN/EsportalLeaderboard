@@ -129,7 +129,8 @@ class StatsFetcher:
     def getAllPlayersStats(self, players):
         playerStats = []
         for player in players:
-            stats = {'kdr': player.kdr,
+            stats = {
+                     'kdr': player.kdr,
                      'clutches': player.clutches,
                      'opening kills': player.openingKills,
                      'hs%': player.hSP,
