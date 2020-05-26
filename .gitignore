@@ -5,6 +5,8 @@ leaderboard.json
 
 __pycache__/
 
+ScriptLauncher.txt
+
 ScriptLauncher.bat
 
-ScriptLauncher.txt
+playerStats.json

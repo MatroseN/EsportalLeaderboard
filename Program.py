@@ -5,7 +5,7 @@ main = Main.Main()
 
 
 def run():
-    threading.Timer(1800.0, run).start()
+    threading.Timer(600, run).start()
     main.main()
 
 
