@@ -34,6 +34,7 @@ class Main:
         MatroseN.machURLEND = "&_u=51846782&_t=%23BWS%2F(SJ`eViX9Yc`KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         MatroseN.matches = self.matchFetcher.getPlayerMatches(MatroseN)
         self.statfetcher.updatePlayerStats(MatroseN)
+        MatroseN.printStats()
         players.append(MatroseN)
 
         # Limé
@@ -43,6 +44,7 @@ class Main:
         Lime.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Lime.matches = self.matchFetcher.getPlayerMatches(Lime)
         self.statfetcher.updatePlayerStats(Lime)
+        Lime.printStats()
         players.append(Lime)
 
         # Microstatic
@@ -52,6 +54,7 @@ class Main:
         Micro.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Micro.matches = self.matchFetcher.getPlayerMatches(Micro)
         self.statfetcher.updatePlayerStats(Micro)
+        Micro.printStats()
         players.append(Micro)
 
         # DanielBKR
@@ -80,7 +83,7 @@ class Main:
         Plixz.matches = self.matchFetcher.getPlayerMatches(Plixz)
         self.statfetcher.updatePlayerStats(Plixz)
         players.append(Plixz)
-
+        Plixz.printStats()
         topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
 
         '''
