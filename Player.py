@@ -1,3 +1,4 @@
+# This class represents a player. You instanciate a player and then add the relevant stats to the player
 
 
 class Player:

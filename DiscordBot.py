@@ -79,5 +79,4 @@ async def stats(ctx, playername):
     await ctx.author.send("/////// STATS ////// \n Stats PLAYER **{}**: \n".format(playername) + "{}".format(message))
     await ctx.channel.purge(limit=1)
 
-
 client.run(TOKEN)

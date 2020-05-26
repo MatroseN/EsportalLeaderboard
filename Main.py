@@ -26,7 +26,6 @@ class Main:
         fake.mostKillsInOneMatch = -10
         fake.defuses = -10
         players.append(fake)
-        print("")
 
         # MatroseN
         MatroseN = Player.Player("MatroseN", 51846782,
@@ -35,8 +34,8 @@ class Main:
         MatroseN.machURLEND = "&_u=51846782&_t=%23BWS%2F(SJ`eViX9Yc`KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         MatroseN.matches = self.matchFetcher.getPlayerMatches(MatroseN)
         self.statfetcher.updatePlayerStats(MatroseN)
+        MatroseN.printStats()
         players.append(MatroseN)
-        print("")
 
         # Limé
         Lime = Player.Player("Limé", 164476701,
@@ -45,8 +44,8 @@ class Main:
         Lime.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Lime.matches = self.matchFetcher.getPlayerMatches(Lime)
         self.statfetcher.updatePlayerStats(Lime)
+        Lime.printStats()
         players.append(Lime)
-        print("")
 
         # Microstatic
         Micro = Player.Player("Microstatic", 93317275,
@@ -55,8 +54,8 @@ class Main:
         Micro.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Micro.matches = self.matchFetcher.getPlayerMatches(Micro)
         self.statfetcher.updatePlayerStats(Micro)
+        Micro.printStats()
         players.append(Micro)
-        print("")
 
         # DanielBKR
         BKR = Player.Player("DanielBKR", 333977649,
@@ -66,7 +65,6 @@ class Main:
         BKR.matches = self.matchFetcher.getPlayerMatches(BKR)
         self.statfetcher.updatePlayerStats(BKR)
         players.append(BKR)
-        print("")
 
         # Axzero
         Axzero = Player.Player("Axzero", 80862472,
@@ -76,7 +74,6 @@ class Main:
         Axzero.matches = self.matchFetcher.getPlayerMatches(Axzero)
         self.statfetcher.updatePlayerStats(Axzero)
         players.append(Axzero)
-        print("")
 
         # Plixz
         Plixz = Player.Player("Plixz", 182145351,
@@ -86,10 +83,10 @@ class Main:
         Plixz.matches = self.matchFetcher.getPlayerMatches(Plixz)
         self.statfetcher.updatePlayerStats(Plixz)
         players.append(Plixz)
-        print("")
-
+        Plixz.printStats()
         topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
 
+        '''
         for k, v in topList.items():
             print(k, ":")
             for m, n in v.items():
@@ -98,6 +95,7 @@ class Main:
                 else:
                     print(m, ":", n)
             print("")
+        '''
 
         playerStats = self.statfetcher.getAllPlayersStats(players)
 

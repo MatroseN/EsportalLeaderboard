@@ -129,7 +129,8 @@ class StatsFetcher:
     def getAllPlayersStats(self, players):
         playerStats = []
         for player in players:
-            stats = {'kdr': player.kdr,
+            stats = {
+                     'kdr': player.kdr,
                      'clutches': player.clutches,
                      'opening kills': player.openingKills,
                      'hs%': player.hSP,
@@ -153,6 +154,7 @@ class StatsFetcher:
         topHighestKillCount = self.decideTop(playerStats, 'highest kill-count')
         topDefuser = self.decideTop(playerStats, 'most defuses')
         topPlanter = self.decideTop(playerStats, 'most plants')
+
         topList = {'Highest KDR': topKDR,
                    'Clutch king': topCLUTCHER,
                    'Most opening kills': topOPENER,

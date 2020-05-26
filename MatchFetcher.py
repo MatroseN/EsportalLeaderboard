@@ -1,9 +1,11 @@
 import json
 import requests
 
+# This class is responsible of fetching the matches for the players
+
 
 class MatchFetcher:
-
+    # Gets the data from a website
     def getData(self, url):
         data = json.loads(requests.get(url).text)
         return data
@@ -16,6 +18,7 @@ class MatchFetcher:
                     idList.append(v)
         return idList
 
+    #
     def getMatches(self, matchIds, player):
         matches = []
         matchURLStart = player.matchURLSTART
