@@ -99,5 +99,10 @@ class Main:
                     print(m, ":", n)
             print("")
 
+        playerStats = self.statfetcher.getAllPlayersStats(players)
+
         with open('leaderboard.json', 'w', encoding='utf-8') as f:
             json.dump(topList, f, ensure_ascii=False, indent=4)
+
+        with open('playerStats.json', 'w', encoding='utf-8') as f:
+            json.dump(playerStats, f, ensure_ascii=False, indent=4)
