@@ -10,3 +10,5 @@ ScriptLauncher.txt
 ScriptLauncher.bat
 
 playerStats.json
+
+venv/
