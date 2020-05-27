@@ -1,5 +1,6 @@
 import json
 import os
+import difflib
 from discord.ext import commands
 
 DISCORD_TOKEN = os.environ.get('ESPORTAL_LEADERBOARD_DISCORD_TOKEN')
@@ -8,6 +9,8 @@ DISCORD_GUILD = os.environ.get('RELIEF_DISCORD_GUILD_ID')
 TOKEN = DISCORD_TOKEN
 
 client = commands.Bot(command_prefix='!')
+
+nameList = ["microstatic", "Limé", "MatroseN", "Plixz"]
 
 
 @client.event
@@ -58,6 +61,7 @@ async def stats(ctx, playername):
     with open('playerStats.json', encoding='utf-8') as stat_file:
         stats = json.load(stat_file)
 
+    playername = str(difflib.get_close_matches(playername, nameList)).replace("[", "").replace("]", "").replace("'", "")
     message = ""
     stat = ""
     value = ""
