@@ -86,17 +86,6 @@ class Main:
         Plixz.printStats()
         topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
 
-        '''
-        for k, v in topList.items():
-            print(k, ":")
-            for m, n in v.items():
-                if k == 'Headshot machine':
-                    print(m, ":", n, '%')
-                else:
-                    print(m, ":", n)
-            print("")
-        '''
-
         playerStats = self.statfetcher.getAllPlayersStats(players)
 
         with open('leaderboard.json', 'w', encoding='utf-8') as f:
