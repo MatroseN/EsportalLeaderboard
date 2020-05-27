@@ -10,7 +10,7 @@ TOKEN = DISCORD_TOKEN
 
 client = commands.Bot(command_prefix='!')
 
-nameList = ["microstatic", "Limé", "MatroseN", "Plixz"]
+nameList = ["microstatic", "Lime", "MatroseN", "Plixz"]
 
 
 @client.event
