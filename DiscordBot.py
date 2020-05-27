@@ -12,7 +12,6 @@ client = commands.Bot(command_prefix='!')
 
 nameList = ["microstatic", "Lime", "MatroseN", "Plixz"]
 
-
 @client.event
 async def on_ready():
     print("Bot is ready")
@@ -62,6 +61,7 @@ async def stats(ctx, playername):
         stats = json.load(stat_file)
 
     playername = str(difflib.get_close_matches(playername, nameList)).replace("[", "").replace("]", "").replace("'", "")
+
     message = ""
     stat = ""
     value = ""
