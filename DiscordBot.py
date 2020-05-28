@@ -37,7 +37,7 @@ async def ping(ctx):
 async def update(ctx):
     with open('leaderboard.json', encoding='utf-8') as leaderboard_file:
         leaderboard = json.load(leaderboard_file)
-        msg_leaderboard = "__***Stats based on 10 latest matches:***__" + '\n' + '\n'
+        msg_leaderboard = "__***Stats based on 9 latest matches:***__" + '\n' + '\n'
 
         for k, v in leaderboard.items():
             msg_leaderboard += ('**' + str(k) + ": " + '**' + '\n')
