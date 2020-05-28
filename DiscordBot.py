@@ -60,27 +60,42 @@ async def stats(ctx, playername):
     with open('playerStats.json', encoding='utf-8') as stat_file:
         stats = json.load(stat_file)
 
+    nameFound = False
+    inputplayername = playername
     playername = str(difflib.get_close_matches(playername, nameList)).replace("[", "").replace("]", "").replace("'", "")
 
-    message = ""
-    stat = ""
-    value = ""
-    for player in stats:
-        for k, v in player.items():
-            if k == playername:
-                for m, n in v.items():
-                    if m == "most defuses":
-                        stat = "defuses"
-                        value = str(n)
-                    elif m == "most plants":
-                        stat = "plants"
-                        value = str(n)
-                    else:
-                        stat = str(m)
-                        value = str(n)
-                    message += "**" + stat + "**" + ': ' + value + '\n'
+    for name in nameList:
+        if name == playername:
+            nameFound = True
+            return
 
-    await ctx.author.send("/////// STATS ////// \n Stats PLAYER **{}**: \n".format(playername) + "{}".format(message))
-    await ctx.channel.purge(limit=1)
+    if nameFound:
+        message = ""
+        stat = ""
+        value = ""
+        for player in stats:
+            for k, v in player.items():
+                if k == playername:
+                    for m, n in v.items():
+                        if m == "most defuses":
+                            stat = "defuses"
+                            value = str(n)
+                        elif m == "most plants":
+                            stat = "plants"
+                            value = str(n)
+                        else:
+                            stat = str(m)
+                            value = str(n)
+                        message += "**" + stat + "**" + ': ' + value + '\n'
+
+        await ctx.author.send("/////// STATS ////// \n Stats PLAYER **{}**: \n".format(playername) + "{}".format(message))
+        await ctx.channel.purge(limit=1)
+
+    else:
+        if (len(inputplayername)) < 4:
+            await ctx.author.send("Type at least 4 characters!" + '\n' + "Try again!")
+        else:
+            await ctx.author.send("PLAYER **{}**: Not found".format(inputplayername) + '\n' + "Try again!")
+            await ctx.channel.purge(limit=1)
 
 client.run(TOKEN)
