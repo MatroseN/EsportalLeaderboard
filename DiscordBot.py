@@ -71,4 +71,13 @@ async def stats(ctx, playername):
             await ctx.author.send("PLAYER **{}**: Not found".format(inputPlayerName) + '\n' + "Try again!")
             await ctx.channel.purge(limit=1)
 
+# Takes the users input and looks for the specified account on Esportal.
+@client.command()
+async def account(ctx, accountname):
+    accountURL = "https://esportal.com/profile/" + accountname
+
+    await ctx.author.send(accountURL)
+    await ctx.channel.purge(limit=1)
+
+
 client.run(TOKEN)
