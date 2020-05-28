@@ -32,4 +32,4 @@ class Stats(CommandHelper):
                                 stat = str(m)
                                 value = str(n)
                             message += "**" + stat + "**" + ': ' + value + '\n'
-        return message
+            return message
