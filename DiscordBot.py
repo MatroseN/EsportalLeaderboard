@@ -12,7 +12,6 @@ client = commands.Bot(command_prefix='!')
 
 nameList = ["microstatic", "Lime", "MatroseN", "Plixz"]
 
-
 @client.event
 async def on_ready():
     print("Bot is ready")

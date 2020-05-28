@@ -84,6 +84,7 @@ class Main:
         self.statfetcher.updatePlayerStats(Plixz)
         players.append(Plixz)
         Plixz.printStats()
+
         topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
 
         playerStats = self.statfetcher.getAllPlayersStats(players)
@@ -93,3 +94,5 @@ class Main:
 
         with open('playerStats.json', 'w', encoding='utf-8') as f:
             json.dump(playerStats, f, ensure_ascii=False, indent=4)
+
+# comment is here
