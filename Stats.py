@@ -1,5 +1,5 @@
-import CommandHelper
 import difflib
+from CommandHelper import *
 
 
 class Stats(CommandHelper):
