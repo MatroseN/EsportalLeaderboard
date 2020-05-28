@@ -3,7 +3,7 @@ import os
 import Stats
 from discord.ext import commands
 
-DISCORD_TOKEN = os.environ.get('ESPORTAL_LEADERBOARD_DISCORD_TOKEN1')
+DISCORD_TOKEN = os.environ.get('ESPORTAL_LEADERBOARD_DISCORD_TOKEN')
 DISCORD_GUILD = os.environ.get('RELIEF_DISCORD_GUILD_ID')
 
 TOKEN = DISCORD_TOKEN
