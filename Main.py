@@ -38,7 +38,7 @@ class Main:
         players.append(MatroseN)
 
         # Limé
-        Lime = Player.Player("Limé", 164476701,
+        Lime = Player.Player("Lime", 164476701,
                              "https://api.esportal.com/user_profile/get_latest_matches?_=1588608651953&id=164476701&page=1")
         Lime.matchURLSTART = "https://api.esportal.com/match/get?_=1588608699954&"
         Lime.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
