@@ -48,7 +48,7 @@ async def clear(ctx):
     await ctx.channel.purge()
 
 
-@tasks.loop(seconds=3)
+@tasks.loop(minutes=1)
 async def updateLeaderboard():
     if update.checkForUpdate():
         channel = client.get_channel(channelID)
