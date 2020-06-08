@@ -9,8 +9,8 @@ class Stats(JsonFetcher):
         self.playername = playername
         self.nameList = nameList
 
-    def checkIfNameExists(self):
-        self.playername = str(difflib.get_close_matches(self.playername, self.nameList)).replace("[", "").replace("]","").replace("'", "")
+    def checkIfNameExists(self, playername):
+        playername = str(difflib.get_close_matches(self.playername, self.nameList)).replace("[", "").replace("]","").replace("'", "")
 
         for name in self.nameList:
             if name == self.playername:
