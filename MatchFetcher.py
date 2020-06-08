@@ -1,8 +1,8 @@
 import json
 import requests
 
-# This class is responsible of fetching the matches for the players
 
+# This class is responsible of fetching the matches for the players
 
 class MatchFetcher:
     # Gets the data from a website
