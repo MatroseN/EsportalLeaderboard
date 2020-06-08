@@ -60,7 +60,7 @@ async def stats(ctx, playername):
     stats = Stats.Stats("playerStats.json", playername, nameList)
 
     if stats.checkIfNameExists():
-        await ctx.author.send("/////// STATS ////// \n Stats PLAYER **{}**: \n".format(playername) + "{}".format(stats.messagePlayerStats()))
+        await ctx.author.send("//// STATS //// \n Stats PLAYER **{}**: \n".format(stats.playername) + "{}".format(stats.messagePlayerStats()))
         await ctx.channel.purge(limit=1)
     else:
         if (len(inputPlayerName)) < 4:
