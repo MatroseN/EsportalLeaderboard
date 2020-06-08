@@ -59,7 +59,7 @@ async def stats(ctx, playername):
     inputPlayerName = playername
     stats = Stats.Stats("playerStats.json", playername, nameList)
 
-    if stats.checkIfNameExists():
+    if stats.checkIfNameExists(inputPlayerName):
         await ctx.author.send("/////// STATS ////// \n Stats PLAYER **{}**: \n".format(playername) + "{}".format(stats.messagePlayerStats()))
         await ctx.channel.purge(limit=1)
     else:
