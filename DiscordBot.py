@@ -1,6 +1,6 @@
-import json
 import os
 import Stats
+import Update
 from discord.ext import commands
 
 DISCORD_TOKEN = os.environ.get('ESPORTAL_LEADERBOARD_DISCORD_TOKEN')
@@ -35,20 +35,9 @@ async def ping(ctx):
 
 @client.command()
 async def update(ctx):
-    with open('leaderboard.json', encoding='utf-8') as leaderboard_file:
-        leaderboard = json.load(leaderboard_file)
-        msg_leaderboard = "__***Stats based on 9 latest matches:***__" + '\n' + '\n'
-
-        for k, v in leaderboard.items():
-            msg_leaderboard += ('**' + str(k) + ": " + '**' + '\n')
-            for m, n in v.items():
-                if k == 'Headshot machine':
-                    msg_leaderboard += (str(m) + ": " + str(n) + '%' + '\n')
-                else:
-                    msg_leaderboard += (str(m) + ": " + str(n) + '\n')
-            msg_leaderboard += "\n"
+    update = Update.Update("leaderboard.json")
     await ctx.channel.purge()
-    await ctx.send(f'{msg_leaderboard}')
+    await ctx.send(f'{update.composeAndGetMessage()}')
 
 
 @client.command()
