@@ -1,13 +1,21 @@
-from CommandHelper import *
+from JsonFetcher import *
+import JsonComparator
 
 
-class Update(CommandHelper):
-    def __init__(self, leaderboardJson):
-        self.leaderboardJson = leaderboardJson
+class Update(JsonFetcher):
+    def __init__(self):
+        self.leaderboardJson = self.getLeaderboardJson()
+        self.jsonComparator = JsonComparator.JsonComparator(self.leaderboardJson)
 
     def getLeaderboardJson(self):
-        leaderboardJson = super.getJsonFile(self.leaderboardJson)
+        leaderboardJson = self.getJsonFile("leaderboard.json")
         return leaderboardJson
+
+    def checkForUpdate(self):
+        if self.jsonComparator.compareAndUpdateJson(self.leaderboardJson, "leaderboard.json"):
+            return True
+        else:
+            return False
 
     def composeAndGetMessage(self):
         msg_leaderboard = "__***Stats based on 9 latest matches:***__" + '\n' + '\n'
