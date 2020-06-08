@@ -1,7 +1,7 @@
-import json
 import os
 import Stats
-from discord.ext import commands
+import Update
+from discord.ext import commands, tasks
 
 DISCORD_TOKEN = os.environ.get('ESPORTAL_LEADERBOARD_DISCORD_TOKEN')
 DISCORD_GUILD = os.environ.get('RELIEF_DISCORD_GUILD_ID')
@@ -10,12 +10,20 @@ TOKEN = DISCORD_TOKEN
 
 client = commands.Bot(command_prefix='!')
 
+channelID = int(os.environ.get('RELIEF_LEADERBOARD_CHANNEL_ID'))
+
 nameList = ["microstatic", "Lime", "MatroseN", "Plixz"]
+
+update = Update.Update()
 
 
 @client.event
 async def on_ready():
     print("Bot is ready")
+    channel = client.get_channel(channelID)
+    await channel.purge()
+    await channel.send(f'{update.composeAndGetMessage()}')
+    updateLeaderboard.start()
 
 
 @client.event
@@ -34,26 +42,16 @@ async def ping(ctx):
 
 
 @client.command()
-async def update(ctx):
-    with open('leaderboard.json', encoding='utf-8') as leaderboard_file:
-        leaderboard = json.load(leaderboard_file)
-        msg_leaderboard = "__***Stats based on 10 latest matches:***__" + '\n' + '\n'
-
-        for k, v in leaderboard.items():
-            msg_leaderboard += ('**' + str(k) + ": " + '**' + '\n')
-            for m, n in v.items():
-                if k == 'Headshot machine':
-                    msg_leaderboard += (str(m) + ": " + str(n) + '%' + '\n')
-                else:
-                    msg_leaderboard += (str(m) + ": " + str(n) + '\n')
-            msg_leaderboard += "\n"
-    await ctx.channel.purge()
-    await ctx.send(f'{msg_leaderboard}')
-
-
-@client.command()
 async def clear(ctx):
     await ctx.channel.purge()
+
+
+@tasks.loop(minutes=1)
+async def updateLeaderboard():
+    if update.checkForUpdate():
+        channel = client.get_channel(channelID)
+        await channel.purge()
+        await channel.send(f'{update.composeAndGetMessage()}')
 
 
 @client.command()
