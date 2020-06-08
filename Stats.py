@@ -1,8 +1,8 @@
 import difflib
-from CommandHelper import *
+from JsonFetcher import *
 
 
-class Stats(CommandHelper):
+class Stats(JsonFetcher):
     def __init__(self, jsonFileName, playername, nameList):
         self.jsonFileName = jsonFileName
         self.stats = super().getJsonFile(self.jsonFileName)
