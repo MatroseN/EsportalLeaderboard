@@ -14,28 +14,28 @@
     },
     {
         "MatroseN": {
-            "kdr": 1.0,
-            "clutches": 4,
+            "kdr": 1.07,
+            "clutches": 3,
             "opening kills": 44,
-            "hs%": 36.31,
-            "assists": 52,
-            "elo change": 49,
-            "highest kill-count": 25,
-            "most defuses": 3,
-            "most plants": 13
+            "hs%": 39.66,
+            "assists": 43,
+            "elo change": 51,
+            "highest kill-count": 31,
+            "most defuses": 2,
+            "most plants": 16
         }
     },
     {
         "Lime": {
-            "kdr": 1.25,
-            "clutches": 6,
-            "opening kills": 68,
-            "hs%": 51.83,
-            "assists": 36,
-            "elo change": 81,
-            "highest kill-count": 35,
+            "kdr": 1.29,
+            "clutches": 4,
+            "opening kills": 57,
+            "hs%": 43.48,
+            "assists": 43,
+            "elo change": 77,
+            "highest kill-count": 39,
             "most defuses": 4,
-            "most plants": 16
+            "most plants": 12
         }
     },
     {
@@ -79,15 +79,15 @@
     },
     {
         "Plixz": {
-            "kdr": 1.06,
-            "clutches": 7,
-            "opening kills": 38,
-            "hs%": 42.7,
-            "assists": 47,
-            "elo change": -5,
-            "highest kill-count": 29,
-            "most defuses": 6,
-            "most plants": 11
+            "kdr": 0.95,
+            "clutches": 3,
+            "opening kills": 36,
+            "hs%": 42.25,
+            "assists": 32,
+            "elo change": 82,
+            "highest kill-count": 30,
+            "most defuses": 1,
+            "most plants": 9
         }
     }
 ]

@@ -2,6 +2,7 @@ import json
 import Player
 import MatchFetcher
 import StatsFetcher
+import threading
 
 
 class Main:
@@ -10,10 +11,26 @@ class Main:
         self.matchFetcher = MatchFetcher.MatchFetcher()
         self.statfetcher = StatsFetcher.StatsFetcher()
 
+    def checkForUpdates(self, players, topList, playerStats):
+        # Updates all players stats if they have new matches
+        isUpdated = False
+        for player in players:
+            if player.name != "fake" and self.matchFetcher.getPlayerMatches(player) != player.matches:
+                isUpdated = True
+                player.matches = self.matchFetcher.getPlayerMatches(player)
+                self.statfetcher.updatePlayerStats(player)
+        if isUpdated:
+            with open('leaderboard.json', 'w', encoding='utf-8') as f:
+                json.dump(topList, f, ensure_ascii=False, indent=4)
+
+            with open('playerStats.json', 'w', encoding='utf-8') as f:
+                json.dump(playerStats, f, ensure_ascii=False, indent=4)
+
     def main(self):
         players = []
 
-        # Fake player for correct printout to discord. Could be done better. Reason: decideTop in statsFetcher initialized topPlayer is not handled as it should. But don´t wanna bother right now.
+        # Fake player for correct printout to discord. Could be done better. Reason:
+        # decideTop in statsFetcher initialized topPlayer is not handled as it should. But don´t wanna bother right now.
         fake = Player.Player("fake", 182145351,
                              "https://api.esportal.com/user_profile/get_latest_matches?_=1588610491353&id=182145351&page=1")
         # Super low fake stats so that the fake player cannot get on the top list
@@ -34,7 +51,6 @@ class Main:
         MatroseN.machURLEND = "&_u=51846782&_t=%23BWS%2F(SJ`eViX9Yc`KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         MatroseN.matches = self.matchFetcher.getPlayerMatches(MatroseN)
         self.statfetcher.updatePlayerStats(MatroseN)
-        MatroseN.printStats()
         players.append(MatroseN)
 
         # Limé
@@ -44,7 +60,6 @@ class Main:
         Lime.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Lime.matches = self.matchFetcher.getPlayerMatches(Lime)
         self.statfetcher.updatePlayerStats(Lime)
-        Lime.printStats()
         players.append(Lime)
 
         # Microstatic
@@ -54,7 +69,6 @@ class Main:
         Micro.matchURLEND = "&_u=51846782&_t=%23BWS%2F(SJ%60eViX9Yc%60KRm%27CE-blVsuqH%27p%24%40I%2Frmg"
         Micro.matches = self.matchFetcher.getPlayerMatches(Micro)
         self.statfetcher.updatePlayerStats(Micro)
-        Micro.printStats()
         players.append(Micro)
 
         # DanielBKR
@@ -83,7 +97,6 @@ class Main:
         Plixz.matches = self.matchFetcher.getPlayerMatches(Plixz)
         self.statfetcher.updatePlayerStats(Plixz)
         players.append(Plixz)
-        Plixz.printStats()
 
         topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
 
@@ -95,4 +108,4 @@ class Main:
         with open('playerStats.json', 'w', encoding='utf-8') as f:
             json.dump(playerStats, f, ensure_ascii=False, indent=4)
 
-# comment is here
+        threading.Timer(300, self.checkForUpdates(players, topList, playerStats)).start()
