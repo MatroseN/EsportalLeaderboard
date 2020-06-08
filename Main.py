@@ -13,18 +13,15 @@ class Main:
 
     def checkForUpdates(self, players, topList, playerStats):
         # Updates all players stats if they have new matches
-        isUpdated = False
         for player in players:
             if player.name != "fake" and self.matchFetcher.getPlayerMatches(player) != player.matches:
-                isUpdated = True
                 player.matches = self.matchFetcher.getPlayerMatches(player)
                 self.statfetcher.updatePlayerStats(player)
-        if isUpdated:
-            with open('leaderboard.json', 'w', encoding='utf-8') as f:
-                json.dump(topList, f, ensure_ascii=False, indent=4)
+                with open('leaderboard.json', 'w', encoding='utf-8') as f:
+                    json.dump(topList, f, ensure_ascii=False, indent=4)
 
-            with open('playerStats.json', 'w', encoding='utf-8') as f:
-                json.dump(playerStats, f, ensure_ascii=False, indent=4)
+                    with open('playerStats.json', 'w', encoding='utf-8') as g:
+                        json.dump(playerStats, g, ensure_ascii=False, indent=4)
 
     def main(self):
         players = []
