@@ -16,8 +16,6 @@ nameList = ["microstatic", "Lime", "MatroseN", "Plixz"]
 
 update = Update.Update()
 
-isLeaderboardInitialized = False
-
 
 @client.event
 async def on_ready():
