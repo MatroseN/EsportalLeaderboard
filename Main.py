@@ -2,7 +2,7 @@ import json
 import Player
 import MatchFetcher
 import StatsFetcher
-import threading
+import time
 
 
 class Main:
@@ -108,4 +108,6 @@ class Main:
         with open('playerStats.json', 'w', encoding='utf-8') as f:
             json.dump(playerStats, f, ensure_ascii=False, indent=4)
 
-        threading.Timer(10, self.checkForUpdates, args=(players, topList, playerStats,)).start()
+        while True:
+            self.checkForUpdates(players, topList, playerStats)
+            time.sleep(300)
