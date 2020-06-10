@@ -11,12 +11,14 @@ class Main:
         self.matchFetcher = MatchFetcher.MatchFetcher()
         self.statfetcher = StatsFetcher.StatsFetcher()
 
-    def checkForUpdates(self, players, topList, playerStats):
+    def checkForUpdates(self, players):
         # Updates all players stats if they have new matches
         for player in players:
             if player.name != "fake" and self.matchFetcher.getPlayerMatches(player) != player.matches:
                 player.matches = self.matchFetcher.getPlayerMatches(player)
                 self.statfetcher.updatePlayerStats(player)
+                topList = self.statfetcher.getToplist(self.statfetcher.getAllPlayersStats(players))
+                playerStats = self.statfetcher.getAllPlayersStats(players)
                 with open('leaderboard.json', 'w', encoding='utf-8') as f:
                     json.dump(topList, f, ensure_ascii=False, indent=4)
 
@@ -106,5 +108,5 @@ class Main:
             json.dump(playerStats, f, ensure_ascii=False, indent=4)
 
         while True:
-            self.checkForUpdates(players, topList, playerStats)
+            self.checkForUpdates(players)
             time.sleep(300)
